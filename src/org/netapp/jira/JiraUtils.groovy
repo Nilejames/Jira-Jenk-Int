@@ -37,3 +37,4 @@ class JiraUtils {
         def jsonResponse = new JsonSlurperClassic().parseText(response.content)
         script.echo "Created JIRA issue: ${jsonResponse.key}"
     }
+}
