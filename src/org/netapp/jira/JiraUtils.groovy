@@ -1,10 +1,9 @@
 package org.netapp.jira
 
 import groovy.json.JsonOutput
-import groovy.json.JsonSlurperClassic
 
 class JiraUtils {
-    static void createIssue(Map params) {
+    static Map getJiraIssueRequestParams(Map params) {
         def jiraUrl = params.jiraUrl
         def projectKey = params.projectKey
         def issueType = params.issueType ?: 'Bug'
@@ -27,16 +26,13 @@ class JiraUtils {
             ]
         ])
 
-        def response = httpRequest(
+        return [
             httpMode: 'POST',
             url: "${jiraUrl}/rest/api/2/issue",
             contentType: 'APPLICATION_JSON',
             customHeaders: [[name: 'Authorization', value: "Basic ${authString}"]],
             requestBody: requestBody
-        )
-
-        def jsonResponse = new JsonSlurperClassic().parseText(response.content)
-        echo "Created JIRA issue: ${jsonResponse.key}"
+        ]
     }
 }
 
