@@ -29,7 +29,7 @@ class JiraUtils {
             httpMode: 'POST',
             url: "${jiraUrl}/rest/api/2/issue",
             contentType: 'APPLICATION_JSON',
-            customHeaders: [[name: 'Authorization', value: "Bearer ${jiraApiToken}", maskValue: true]],
+            customHeaders: [[name: 'Authorization', value: "Bearer ${jiraApiToken}"]],
             requestBody: requestBody,
             validResponseCodes: '200:201'
         )
