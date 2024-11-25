@@ -2,6 +2,7 @@ package org.netapp.jira
 
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurperClassic
+import hudson.AbortException
 
 class JiraUtils {
     static void createIssue(Map params) {
@@ -34,7 +35,12 @@ class JiraUtils {
             validResponseCodes: '200:201'
         )
 
-        def jsonResponse = new JsonSlurperClassic().parseText(response.content)
-        echo "Created JIRA issue: ${jsonResponse.key}"
+        if (response.status >= 200 && response.status < 300) {
+            def jsonResponse = new JsonSlurperClassic().parseText(response.content)
+            echo "Created JIRA issue: ${jsonResponse.key}"
+        } else {
+            throw new AbortException("Failed to create JIRA issue. Response: ${response.content}")
+        }
     }
 }
+
