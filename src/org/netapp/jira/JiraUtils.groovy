@@ -29,7 +29,7 @@ class JiraUtils {
             httpMode: 'POST',
             url: "${jiraUrl}/rest/api/2/issue",
             contentType: 'APPLICATION_JSON',
-            customHeaders: [[name: 'Authorization', value: "Bearer ${jiraApiToken}"]],
+            customHeaders: [[name: 'Authorization', value: "Bearer ${jiraApiToken}", maskValue: true]],
             requestBody: requestBody,
             validResponseCodes: '200:201'
         )
@@ -37,4 +37,3 @@ class JiraUtils {
         def jsonResponse = new JsonSlurperClassic().parseText(response.content)
         script.echo "Created JIRA issue: ${jsonResponse.key}"
     }
-}
