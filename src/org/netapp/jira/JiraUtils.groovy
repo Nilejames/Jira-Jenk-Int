@@ -26,7 +26,7 @@ class JiraUtils {
             ]
         ])
 
-        def response = httpRequest(
+        def response = script.httpRequest(
             httpMode: 'POST',
             url: "${jiraUrl}/rest/api/2/issue",
             contentType: 'APPLICATION_JSON',
