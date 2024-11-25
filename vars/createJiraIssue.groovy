@@ -1,3 +1,3 @@
 def call(Map params) {
-    org.yourorg.jira.JiraUtils.createIssue(this, params)
+    org.netapp.jira.JiraUtils.createIssue(this, params)
 }
