@@ -12,7 +12,7 @@ class JiraUtils {
         def jiraUser = params.jiraUser
         def jiraApiToken = params.jiraApiToken
 
-        def authString = "${jiraUser}:${jiraApiToken}".bytes.encodeBase64().toString()
+        def authString = "${jiraApiToken}".bytes.encodeBase64().toString()
         def requestBody = JsonOutput.toJson([
             fields: [
                 project: [
@@ -30,7 +30,7 @@ class JiraUtils {
             httpMode: 'POST',
             url: "${jiraUrl}/rest/api/2/issue",
             contentType: 'APPLICATION_JSON',
-            customHeaders: [[name: 'Authorization', value: "Basic ${authString}"]],
+            customHeaders: [[name: 'Authorization', value: "Bearer ${authString}"]],
             requestBody: requestBody
         ]
     }
