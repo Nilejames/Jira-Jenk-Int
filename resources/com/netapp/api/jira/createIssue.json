@@ -1,14 +1,13 @@
-    {
-        "fields": {
-            "project": {
-                "key": "${key}"
-            },
-            "summary": "${summary}",
-            "description": "${description}",
-            "issuetype": {
-                "name": "${issueTypeName}"
-            },
-            "versions": "${versions}",
-            "labels": "${labels}"
-        }
-    }
+{
+    \"fields\": {
+       \"project\":
+       {
+          \"key\": \"$key\"
+       },
+       \"summary\": \"$summary\",
+       \"description\": \"$description\",
+       \"issuetype\": {
+          \"name\": \"$issueTypeName\"
+       }
+   }
+}
