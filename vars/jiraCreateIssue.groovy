@@ -26,7 +26,7 @@ def call(Map config = [:]) {
     
     // Execute the curl command and capture the response
     def response = sh(
-        script: 'curl -D-  -H "Authorization: Bearer "$JIRA_CREDENTIALS -X PUT --data "'+render+'" -H "Content-Type: application/json" $JIRA_URL/rest/api/2/issue',
+        script: 'curl -D- -s -o response.json -w "%{http_code}"  -H "Authorization: Bearer "$JIRA_CREDENTIALS -X PUT --data "'+render+'" -H "Content-Type: application/json" $JIRA_URL/rest/api/2/issue',
         returnStdout: true
     ).trim()
     
