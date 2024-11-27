@@ -29,12 +29,13 @@ def call(Map config = [:]) {
         script: 'curl -D- -s -o response.json -w "%{http_code}"  -H "Authorization: Bearer "$JIRA_CREDENTIALS -X PUT --data "'+render+'" -H "Content-Type: application/json" $JIRA_URL/rest/api/2/issue',
         returnStdout: true
     ).trim()
-    
-    // Print the raw response for debugging
-    echo "Raw Response: ${response}"
+
+    def responseBody = readFile('response.json')
+    // Print the raw response body for debugging
+    echo "Raw Response Body: ${responseBody}"
     
     // Parse the response to get the issue key
-    def jsonResponse = new JsonSlurper().parseText(response)
+    def jsonResponse = new JsonSlurper().parseText(responseBody)
     def issueKey = jsonResponse.key
     
     // Construct the issue URL
