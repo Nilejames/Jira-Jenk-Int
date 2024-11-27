@@ -31,8 +31,6 @@ def call(Map config = [:]) {
     ).trim()
 
     def responseBody = readFile('response.json')
-    // Print the raw response body for debugging
-    echo "Raw Response Body: ${responseBody}"
     
     // Parse the response to get the issue key
     def jsonResponse = new JsonSlurper().parseText(responseBody)
@@ -40,10 +38,6 @@ def call(Map config = [:]) {
     
     // Construct the issue URL
     def issueUrl = "${env.JIRA_URL}/browse/${issueKey}"
-    
-    // Print the issue key and URL for debugging
-    echo "Issue Key: ${issueKey}"
-    echo "Issue URL: ${issueUrl}"
     
     // Return the issue key and URL
     return [issueKey: issueKey, issueUrl: issueUrl]
