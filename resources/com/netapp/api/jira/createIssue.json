@@ -1,13 +1,12 @@
 {
-    \"fields\": {
-       \"project\":
-       {
-          \"key\": \"$key\"
-       },
-       \"summary\": \"$summary\",
-       \"description\": \"$description\",
-       \"issuetype\": {
-          \"name\": \"$issueTypeName\"
-       }
-   }
+    "fields": {
+        "project": {
+            "key": "NFSAAS"
+        },
+        "summary": "New bug from Jenkins - Nileena",
+        "description": "Description of the bug created from Jenkins - Nileena",
+        "issuetype": {
+            "name": "Bug"
+        }
+    }
 }
