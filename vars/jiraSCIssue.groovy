@@ -85,10 +85,4 @@ def bugExists(Map existingBugs, List<String> keywords) {
         keywords.any { keyword -> keyword.toLowerCase() in summary || keyword.toLowerCase() in description }
     }
 }
-
-def renderTemplate(String template, Map binding) {
-    binding.each { key, value ->
-        template = template.replaceAll("\\$\$${key}\$", value.toString())
-    }
-    return template
 }
