@@ -63,7 +63,7 @@ jql_query = f'project = "{PROJECT_KEY}" AND status = "Open" AND issuetype = "Bug
 existing_bugs = search_existing_bugs(jql_query)
 
 # Keywords to look for in existing bugs
-keywords = ["polling ONTAP"]
+keywords = ["just no keywords"]
 
 if not bug_exists(existing_bugs, keywords):
     new_bug = {
