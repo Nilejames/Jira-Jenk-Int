@@ -85,4 +85,4 @@ def bugExists(Map existingBugs, List<String> keywords) {
         keywords.any { keyword -> keyword.toLowerCase() in summary || keyword.toLowerCase() in description }
     }
 }
-}
+
